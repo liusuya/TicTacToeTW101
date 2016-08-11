@@ -12,7 +12,10 @@ public class TicTacToeGame {
 
     public void start() {
 
-        for (int num = 1; num <= 9; num++)
-            printStream.println(Integer.toString(num));
+        for (int num = 1; num <= 9; num++) {
+            printStream.print(Integer.toString(num));
+            if (num == 3 || num == 6)
+                printStream.print("\n");
+        }
     }
 }
