@@ -3,6 +3,7 @@ package com.thoughtworks.tictactoe;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.BufferedReader;
 import java.io.PrintStream;
 
 import static org.mockito.Matchers.contains;
@@ -12,11 +13,14 @@ public class TicTacToeGameTest {
 
     private PrintStream printStream;
     private TicTacToeGame tTTGame;
+    private BufferedReader reader;
+
 
     @Before
     public void setUp() throws Exception {
         printStream = mock(PrintStream.class);
-        tTTGame = new TicTacToeGame(printStream);
+        tTTGame = new TicTacToeGame(printStream, reader);
+        reader = mock(BufferedReader.class);
     }
 
     @Test
@@ -68,8 +72,15 @@ public class TicTacToeGameTest {
     }
 
     @Test
-    public void shouldPromptUserToEnterANumberToPlaceMark() throws Exception {
+    public void shouldPromptUserToEnterANumberToPlaceMark(){
         tTTGame.promptUser();
         verify(printStream).println("Please Enter A Number to Place Your Mark");
+    }
+
+    @Test
+    public void shouldGetInputFromUserWhenPromptUserIsCalled() throws Exception {
+        tTTGame.promptUser();
+        verify(reader).readLine();
+
     }
 }
