@@ -20,6 +20,7 @@ public class TicTacToeGame {
 
     public void start() {
         drawBoard();
+        promptUser();
 
     }
 

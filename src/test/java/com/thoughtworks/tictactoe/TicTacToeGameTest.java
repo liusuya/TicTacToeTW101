@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
 
 public class TicTacToeGameTest {
@@ -23,12 +25,12 @@ public class TicTacToeGameTest {
     public void setUp() throws Exception {
         printStream = mock(PrintStream.class);
         reader = mock(BufferedReader.class);
+        cells = Arrays.asList("1","2","3","4","5","6","7","8","9");
+        tTTGame = new TicTacToeGame(printStream, reader, cells);
     }
 
     @Test
     public void shouldPrintNumbersOnBoardWhenGameStarts(){
-        cells = Arrays.asList("1","2","3","4","5","6","7","8","9");
-        tTTGame = new TicTacToeGame(printStream, reader, cells);
         tTTGame.start();
         verify(printStream).println(
                 "1|2|3\n" +
@@ -59,8 +61,8 @@ public class TicTacToeGameTest {
     }
 
     @Test
-    @Ignore
     public void shouldMarkXInFirstSpot() {
-        tTTGame.Mark("X");
+        tTTGame.Mark("1");
+        assertThat(cells.get(0), is("X"));
     }
 }
