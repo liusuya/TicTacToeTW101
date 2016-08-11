@@ -64,5 +64,10 @@ public class TicTacToeGameTest {
         assertThat(cells.get(0), is("X"));
     }
 
+    @Test
+    public void shouldMarkXInAnyIndicatedSpot()  {
+        tTTGame.mark("5");
+        assertThat(cells.get(4), is("X"));
 
+    }
 }

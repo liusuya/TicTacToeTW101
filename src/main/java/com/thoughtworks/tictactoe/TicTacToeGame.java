@@ -46,8 +46,8 @@ public class TicTacToeGame {
     }
 
     public void mark(String input) {
-        //int cellIndex = Integer.parseInt(input) - 1;
-        cells.set(1, "X");
+        int cellIndex = Integer.parseInt(input) - 1;
+        cells.set(cellIndex, "X");
 
 
     }
