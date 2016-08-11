@@ -40,14 +40,20 @@ public class TicTacToeGameTest {
     }
 
     @Test
-    public void shouldPrintNewLineBetween3and4And6and7WhenGameStartsForGameBoard() {
+    public void shouldPrintNewLineBetween3and4And6and7WhenGameStarts() {
         tTTGame.start();
         verify(printStream,times(2)).print(contains("\n"));
     }
 
     @Test
-    public void shouldPrintDashesAfterNewlinesWhenBoardIsCreated() throws Exception {
+    public void shouldPrintDashesAfterNewlinesWhenGameStarts() throws Exception {
         tTTGame.start();
         verify(printStream,times(2)).print(contains("\n-"));
+    }
+
+    @Test
+    public void shouldPrintNewlineAfterDashesWhenGameStarts() throws Exception {
+        tTTGame.start();
+        verify(printStream,times(2)).print(contains("-\n"));
     }
 }
