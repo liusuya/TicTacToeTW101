@@ -2,28 +2,36 @@ package com.thoughtworks.tictactoe;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.util.List;
 
 public class TicTacToeGame {
 
     private PrintStream printStream;
-    private final BufferedReader reader;
+    private  BufferedReader reader;
+    private List<String> cells;
 
-    public TicTacToeGame(PrintStream printStream, BufferedReader reader) {
+    public TicTacToeGame(PrintStream printStream, BufferedReader reader, List<String> cells) {
         this.printStream = printStream;
         this.reader = reader;
+        this.cells = cells;
     }
 
 
     public void start() {
-        printStream.println(
-                "1|2|3\n" +
-                "-----\n" +
-                "4|5|6\n" +
-                "-----\n" +
-                "7|8|9\n");
+        drawBoard();
 
+    }
+
+    public void drawBoard() {
+
+        String board = String.format("%s|%s|%s\n" +
+                        "-----\n" +
+                        "%s|%s|%s\n" +
+                        "-----\n" +
+                        "%s|%s|%s\n", cells.toArray());
+
+        printStream.println(board);
     }
 
     public void promptUser() {
@@ -34,5 +42,9 @@ public class TicTacToeGame {
         } catch (IOException e) {
             throw new RuntimeIOException(e);
         }
+    }
+
+    public void Mark(String input) {
+
     }
 }
