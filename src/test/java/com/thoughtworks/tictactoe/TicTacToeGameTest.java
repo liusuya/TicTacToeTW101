@@ -44,21 +44,26 @@ public class TicTacToeGameTest {
     }
 
     @Test
-    public void shouldPrintDashesAfterNewlinesWhenGameStarts() throws Exception {
+    public void shouldPrintDashesAfterNewlinesWhenGameStarts()  {
         tTTGame.start();
         verify(printStream,atLeastOnce()).print(contains("\n-"));
     }
 
     @Test
-    public void shouldPrintNewlineAfterDashesWhenGameStarts() throws Exception {
+    public void shouldPrintNewlineAfterDashesWhenGameStarts() {
         tTTGame.start();
         verify(printStream,atLeastOnce()).print(contains("-\n"));
     }
 
     @Test
-    public void shouldPrintPipeSymbolBTWAllNumbersNotSeparatedByDashes() throws Exception {
+    public void shouldPrintPipeSymbolBTWAllNumbersNotSeparatedByDashes() {
         tTTGame.start();
         verify(printStream,atLeastOnce()).print(contains("|"));
+    }
 
+    @Test
+    public void shouldNotPrintPipeSymbolAfter9WhenBoardIsDrawn() {
+        tTTGame.start();
+        verify(printStream,never()).print(contains("9|"));
     }
 }
