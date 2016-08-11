@@ -1,12 +1,10 @@
 package com.thoughtworks.tictactoe;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.BufferedReader;
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -62,7 +60,9 @@ public class TicTacToeGameTest {
 
     @Test
     public void shouldMarkXInFirstSpot() {
-        tTTGame.Mark("1");
+        tTTGame.mark("1");
         assertThat(cells.get(0), is("X"));
     }
+
+
 }

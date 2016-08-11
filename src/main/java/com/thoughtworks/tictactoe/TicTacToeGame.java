@@ -37,7 +37,7 @@ public class TicTacToeGame {
 
     public void promptUser() {
         String input;
-        printStream.println("Please Enter A Number to Place Your Mark");
+        printStream.println("Please Enter A Number to Place Your mark");
         try {
             input = reader.readLine();
         } catch (IOException e) {
@@ -45,7 +45,10 @@ public class TicTacToeGame {
         }
     }
 
-    public void Mark(String input) {
+    public void mark(String input) {
+        //int cellIndex = Integer.parseInt(input) - 1;
+        cells.set(1, "X");
+
 
     }
 }
