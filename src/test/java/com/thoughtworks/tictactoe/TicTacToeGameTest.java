@@ -4,6 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.BufferedReader;
+import java.io.IOError;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
@@ -31,14 +33,15 @@ public class TicTacToeGameTest {
     }
 
     @Test
-    public void shouldPrintNumbersOnBoardWhenGameStarts(){
+    public void shouldPrintNumbersOnBoardWhenGameStarts() throws IOException{
+        when(reader.readLine()).thenReturn("1");
         tTTGame.start();
-        verify(printStream).println(
+        verify(printStream).println(contains(
                 "1|2|3\n" +
                 "-----\n" +
                 "4|5|6\n" +
                 "-----\n" +
-                "7|8|9\n");
+                "7|8|9\n"));
     }
 
     @Test
@@ -57,6 +60,7 @@ public class TicTacToeGameTest {
 
     @Test
     public void shouldGetInputFromUserWhenPromptUserCalled() throws Exception {
+        when(reader.readLine()).thenReturn("1");
         tTTGame.promptUser();
         verify(reader).readLine();
     }
@@ -71,6 +75,7 @@ public class TicTacToeGameTest {
     @Test
     public void shouldMarkXInAnyIndicatedSpot()  {
         when(player1.getSymbol()).thenReturn("X");
+
         tTTGame.mark("5", player1);
         assertThat(cells.get(4), is("X"));
 

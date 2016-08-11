@@ -12,7 +12,7 @@ public class TicTacToeGame {
     private List<String> cells;
     private Player player1;
     private Player player2;
-    private Boolean isPlayer1 = true;
+    private Boolean isPlayer1 = false;
 
     public TicTacToeGame(PrintStream printStream, BufferedReader reader, List<String> cells, Player player1, Player player2) {
         this.printStream = printStream;
@@ -24,6 +24,8 @@ public class TicTacToeGame {
 
 
     public void start() {
+        drawBoard();
+        promptUser();
         drawBoard();
         promptUser();
         drawBoard();
@@ -53,10 +55,10 @@ public class TicTacToeGame {
     }
 
     private Player currentPlayer() {
+        isPlayer1 = (!isPlayer1);
         if (isPlayer1) {
             return player1;
         }else {
-            isPlayer1 = (!isPlayer1);
             return player2;
         }
     }
