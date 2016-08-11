@@ -43,7 +43,11 @@ public class TicTacToeGameTest {
     public void shouldPrintNewLineBetween3and4And6and7WhenGameStartsForGameBoard() {
         tTTGame.start();
         verify(printStream,times(2)).print(contains("\n"));
+    }
 
-
+    @Test
+    public void shouldPrintDashesAfterNewlinesWhenBoardIsCreated() throws Exception {
+        tTTGame.start();
+        verify(printStream,times(2)).print(contains("\n-"));
     }
 }
