@@ -28,6 +28,13 @@ public class TicTacToeGameTest {
 
     @Test
     public void shouldPrintAnotherNumberBetween1and9WhenGameStarts() {
+        tTTGame.start();
+        verify(printStream).println(contains("9"));
+    }
 
+    @Test
+    public void shouldPrintAllNumbersBTW1and9whenGameStarts(){
+        tTTGame.start();
+        verify(printStream).println(contains("5"));
     }
 }
