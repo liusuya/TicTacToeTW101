@@ -11,11 +11,19 @@ import static org.mockito.Mockito.*;
 
 public class TicTacToeGameTest {
 
+    private PrintStream printStream;
+    private BufferedReader reader;
+    private TicTacToeGame tTTGame;
+
+    @Before
+    public void setUp() throws Exception {
+        printStream = mock(PrintStream.class);
+        reader = mock(BufferedReader.class);
+        tTTGame = new TicTacToeGame(printStream, reader);
+    }
+
     @Test
-    public void shouldPrintBoardWhenGameStarts(){
-        PrintStream printStream = mock(PrintStream.class);
-        BufferedReader reader = mock(BufferedReader.class);
-        TicTacToeGame tTTGame = new TicTacToeGame(printStream, reader);
+    public void shouldPrintNumbersOnBoardWhenGameStarts(){
         tTTGame.start();
         verify(printStream).println(
                 "1|2|3\n" +
@@ -23,5 +31,12 @@ public class TicTacToeGameTest {
                 "4|5|6\n" +
                 "-----\n" +
                 "7|8|9\n");
+    }
+
+    @Test
+    public void shouldGetInputFromUserWhenPromptUserCalled() throws Exception {
+        tTTGame.promptUser();
+        verify(reader).readLine();
+
     }
 }
