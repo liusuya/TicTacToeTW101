@@ -15,19 +15,15 @@ public class TicTacToeGame {
         this.reader = reader;
     }
 
+
     public void start() {
+        printStream.println(
+                "1|2|3\n" +
+                "-----\n" +
+                "4|5|6\n" +
+                "-----\n" +
+                "7|8|9\n");
 
-        for (int num = 1; num <= 9; num++) {
-            printStream.print(Integer.toString(num));
-            if (num == 3 || num == 6) {
-                printStream.print("\n-----\n");
-            }else if (num == 9) {
-                //do nothing
-            }else {
-                printStream.print("|");
-            }
-
-        }
     }
 
     public void promptUser() {
