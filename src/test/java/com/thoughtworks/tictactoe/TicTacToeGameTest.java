@@ -18,13 +18,16 @@ public class TicTacToeGameTest {
     private BufferedReader reader;
     private TicTacToeGame tTTGame;
     private List<String> cells;
+    private Player player1;
+
 
     @Before
     public void setUp() throws Exception {
         printStream = mock(PrintStream.class);
         reader = mock(BufferedReader.class);
         cells = Arrays.asList("1","2","3","4","5","6","7","8","9");
-        tTTGame = new TicTacToeGame(printStream, reader, cells);
+        player1 = mock(Player.class);
+        tTTGame = new TicTacToeGame(printStream, reader, cells, player1, player1);
     }
 
     @Test
@@ -41,7 +44,7 @@ public class TicTacToeGameTest {
     @Test
     public void shouldBeAbleToChangeTheBoardWhenAStateChanges(){
         cells = Arrays.asList("a","b","c","d","e","f","g","h","i");
-        tTTGame = new TicTacToeGame(printStream, reader, cells);
+        tTTGame = new TicTacToeGame(printStream, reader, cells, player1, player1);
         tTTGame.drawBoard();
         verify(printStream).println(
                 "a|b|c\n" +
@@ -60,14 +63,24 @@ public class TicTacToeGameTest {
 
     @Test
     public void shouldMarkXInFirstSpot() {
-        tTTGame.mark("1");
+        when(player1.getSymbol()).thenReturn("X");
+        tTTGame.mark("1", player1);
         assertThat(cells.get(0), is("X"));
     }
 
     @Test
     public void shouldMarkXInAnyIndicatedSpot()  {
-        tTTGame.mark("5");
+        when(player1.getSymbol()).thenReturn("X");
+        tTTGame.mark("5", player1);
         assertThat(cells.get(4), is("X"));
+
+    }
+
+    @Test
+    public void shouldMarkOInAnyIndicatedSpot(){
+        when(player1.getSymbol()).thenReturn("O");
+        tTTGame.mark("1", player1);
+        assertThat(cells.get(0), is("O"));
 
     }
 }
