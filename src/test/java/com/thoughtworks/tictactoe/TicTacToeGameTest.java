@@ -9,7 +9,7 @@ import static org.mockito.Matchers.contains;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class MainTest {
+public class TicTacToeGameTest {
 
     private PrintStream printStream;
     private TicTacToeGame tTTGame;
