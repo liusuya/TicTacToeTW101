@@ -1,5 +1,6 @@
 package com.thoughtworks.tictactoe;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.PrintStream;
@@ -10,12 +11,23 @@ import static org.mockito.Mockito.verify;
 
 public class MainTest {
 
+    private PrintStream printStream;
+    private TicTacToeGame tTTGame;
+
+    @Before
+    public void setUp() throws Exception {
+        printStream = mock(PrintStream.class);
+        tTTGame = new TicTacToeGame(printStream);
+    }
+
     @Test
     public void shouldPrintANumberWhenGameStarts() {
-        PrintStream printStream = mock(PrintStream.class);
-        TicTacToeGame tTTGame = new TicTacToeGame(printStream);
         tTTGame.start();
         verify(printStream).println(contains("1"));
     }
 
+    @Test
+    public void shouldPrintAnotherNumberBetween1and9WhenGameStarts() {
+
+    }
 }
