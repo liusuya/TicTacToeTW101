@@ -12,9 +12,9 @@ public class MainTest {
 
     @Test
     public void shouldPrintANumberWhenGameStarts() {
-        TicTacToeGame tTTGame = new TicTacToeGame();
-        tTTGame.start();
         PrintStream printStream = mock(PrintStream.class);
+        TicTacToeGame tTTGame = new TicTacToeGame(printStream);
+        tTTGame.start();
         verify(printStream).println(contains("1"));
     }
 
