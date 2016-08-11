@@ -24,4 +24,8 @@ public class TicTacToeGame {
 
         }
     }
+
+    public void promptUser() {
+        printStream.println("Please Enter A Number to Place Your Mark");
+    }
 }

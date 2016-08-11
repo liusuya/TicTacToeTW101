@@ -66,4 +66,10 @@ public class TicTacToeGameTest {
         tTTGame.start();
         verify(printStream,never()).print(contains("9|"));
     }
+
+    @Test
+    public void shouldPromptUserToEnterANumberToPlaceMark() throws Exception {
+        tTTGame.promptUser();
+        verify(printStream).println("Please Enter A Number to Place Your Mark");
+    }
 }
