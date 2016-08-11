@@ -16,6 +16,8 @@ public class TicTacToeGame {
             printStream.print(Integer.toString(num));
             if (num == 3 || num == 6)
                 printStream.print("\n-----\n");
+            else
+                printStream.print("|");
         }
     }
 }
